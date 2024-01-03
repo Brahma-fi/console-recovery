@@ -75,14 +75,17 @@ export default function Home() {
   };
 
   const onDownloadClickHandler = async () => {
+    console.log("download handler entered");
     const { consoleAddress, selectedChain, selectedSubaccounts } =
       userSelection;
     if (
       !process.env.NEXT_PUBLIC_PROVIDER_API ||
       !isAddress(consoleAddress) ||
       selectedSubaccounts.length === 0
-    )
+    ) {
+      console.log("early return added");
       return;
+    }
 
     await generateTxnJson(consoleAddress, selectedSubaccounts, provider);
   };

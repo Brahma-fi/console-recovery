@@ -10,10 +10,12 @@ export const generateTxnJson = async (
   subaccounts: string[],
   provider: ethers.providers.AlchemyProvider
 ) => {
+  console.log("entered generateTxnJson");
   const { mainOwners, mainThreshold } = await getMainSafeConfig(
     consoleSafe,
     provider
   );
+  console.log("got main safe config");
 
   let transactions = [];
 
