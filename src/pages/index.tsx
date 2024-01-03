@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import SubAccountsView from "@/components/SubAccountsView/indes";
-import { getConsoleSubaccounts } from "@/config/actions";
+import { generateTxnJson, getConsoleSubaccounts } from "@/config/actions";
 import { ethers } from "ethers";
 import { isAddress } from "ethers/lib/utils";
 import { useEffect, useMemo, useState } from "react";
@@ -74,6 +74,19 @@ export default function Home() {
     }));
   };
 
+  const onDownloadClickHandler = async () => {
+    const { consoleAddress, selectedChain, selectedSubaccounts } =
+      userSelection;
+    if (
+      !process.env.NEXT_PUBLIC_PROVIDER_API ||
+      !isAddress(consoleAddress) ||
+      selectedSubaccounts.length === 0
+    )
+      return;
+
+    await generateTxnJson(consoleAddress, selectedSubaccounts, provider);
+  };
+
   return (
     <main className="px-[6rem] py-[4rem]">
       <Header
@@ -83,6 +96,7 @@ export default function Home() {
         setChain={setChainHandler}
       />
       <SubAccountsView
+        onDownloadClick={onDownloadClickHandler}
         subaccounts={subaccount}
         selectAccount={selectSubAccountHandler}
         selectedAccounts={userSelection.selectedSubaccounts}

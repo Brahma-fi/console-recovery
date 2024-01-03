@@ -1,18 +1,12 @@
-import { BigNumber, ethers, constants } from "ethers";
-import {
-  TxBuilder,
-  ParsingError,
-  ChecksumParsingError,
-  TransactionParsingError,
-} from "@morpho-labs/gnosis-tx-builder";
+import { ethers, constants } from "ethers";
+import { TxBuilder } from "@morpho-labs/gnosis-tx-builder";
 import safeAbi from "../abi/safeAbi.json";
 import walletRegistryAbi from "../abi/walletRegAbi.json";
 import { ADDRESS_1, WALLET_REGISTRY } from "./constants";
+import { saveAs } from "file-saver";
 
 export const generateTxnJson = async (
   consoleSafe: string,
-  network: string,
-  apiKey: string,
   subaccounts: string[],
   provider: ethers.providers.AlchemyProvider
 ) => {
@@ -90,10 +84,11 @@ export const generateTxnJson = async (
 
   const batchJson = TxBuilder.batch(consoleSafe, transactions);
 
-  //   fs.writeFileSync(
-  //     `recoverSubaccounts_${consoleSafe}_${network}.json`,
-  //     JSON.stringify(batchJson, null, 2)
-  //   );
+  const jsonBlob = new Blob([JSON.stringify(batchJson)], {
+    type: "application/json",
+  });
+
+  saveAs(jsonBlob, "data.json");
 };
 
 export const getMainSafeConfig = async (
