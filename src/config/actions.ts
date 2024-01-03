@@ -84,6 +84,8 @@ export const generateTxnJson = async (
 
   const batchJson = TxBuilder.batch(consoleSafe, transactions);
 
+  console.log("JSON", batchJson);
+
   const jsonBlob = new Blob([JSON.stringify(batchJson)], {
     type: "application/json",
   });
