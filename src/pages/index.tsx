@@ -1,13 +1,15 @@
 import Header from "@/components/Header";
 import SubAccountsView from "@/components/SubAccountsView/indes";
 import { generateTxnJson, getConsoleSubaccounts } from "@/config/actions";
+import { ETHEREUM_RPC, GOERLI_RPC, ARBITRUM_RPC } from "@/config/constants";
 import { ethers } from "ethers";
 import { isAddress } from "ethers/lib/utils";
 import { useEffect, useMemo, useState } from "react";
 
 export const AVAILABLE_CHAINS = {
-  mainnet: "homestead",
+  mainnet: "mainnet",
   arbitrum: "arbitrum",
+  goerli: "goerli",
 };
 
 type UserSelection = {
@@ -26,11 +28,23 @@ export default function Home() {
   const [subaccount, setSubaccounts] = useState<string[]>([]);
 
   const provider = useMemo(() => {
+
+    let rpcUrl
+    switch (userSelection.selectedChain) {
+      case "mainnet":
+        rpcUrl = ETHEREUM_RPC
+        break;
+      case "goerli":
+        rpcUrl = GOERLI_RPC
+        break;
+      case "arbitrum":
+        rpcUrl = ARBITRUM_RPC
+        break;
+      default:
+        rpcUrl = ETHEREUM_RPC
+    }
     return (
-      new ethers.providers.AlchemyProvider(
-        userSelection.selectedChain,
-        process.env.NEXT_PUBLIC_PROVIDER_API
-      ) || null
+      new ethers.providers.JsonRpcProvider(rpcUrl)
     );
   }, [userSelection.selectedChain]);
 
@@ -79,7 +93,6 @@ export default function Home() {
     const { consoleAddress, selectedChain, selectedSubaccounts } =
       userSelection;
     if (
-      !process.env.NEXT_PUBLIC_PROVIDER_API ||
       !isAddress(consoleAddress) ||
       selectedSubaccounts.length === 0
     ) {

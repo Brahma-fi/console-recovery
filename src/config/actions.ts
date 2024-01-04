@@ -2,13 +2,13 @@ import { ethers, constants } from "ethers";
 import { TxBuilder } from "@morpho-labs/gnosis-tx-builder";
 import safeAbi from "../abi/safeAbi.json";
 import walletRegistryAbi from "../abi/walletRegAbi.json";
-import { ADDRESS_1, WALLET_REGISTRY } from "./constants";
+import { ADDRESS_0, ADDRESS_1, WALLET_REGISTRY } from "./constants";
 import { saveAs } from "file-saver";
 
 export const generateTxnJson = async (
   consoleSafe: string,
   subaccounts: string[],
-  provider: ethers.providers.AlchemyProvider
+  provider: ethers.providers.JsonRpcProvider
 ) => {
   console.log("entered generateTxnJson");
   const { mainOwners, mainThreshold } = await getMainSafeConfig(
@@ -82,11 +82,24 @@ export const generateTxnJson = async (
         ),
       });
     }
+
+    const removeGuardCalldata = subaccountSafeContract.interface.encodeFunctionData("setGuard", [ADDRESS_0])
+    transactions.push({
+      to: subaccount,
+      value: "0",
+      data: subaccountSafeContract.interface.encodeFunctionData(
+        "execTransactionFromModule",
+        [subaccount, 0, removeGuardCalldata, 0]
+      ),
+    });
   }
 
   const batchJson = TxBuilder.batch(consoleSafe, transactions);
 
   console.log("JSON", batchJson);
+
+  batchJson.chainId = provider.network.chainId.toString();
+  batchJson.meta.name = `Console Safe ${consoleSafe} Subaccount Recovery`;
 
   const jsonBlob = new Blob([JSON.stringify(batchJson)], {
     type: "application/json",
@@ -97,7 +110,7 @@ export const generateTxnJson = async (
 
 export const getMainSafeConfig = async (
   consoleSafe: string,
-  provider: ethers.providers.AlchemyProvider
+  provider: ethers.providers.JsonRpcProvider
 ) => {
   const consoleSafeContract = new ethers.Contract(
     consoleSafe,
