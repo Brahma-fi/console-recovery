@@ -106,7 +106,7 @@ export const generateTxnJson = async (
     type: "application/json",
   });
 
-  saveAs(jsonBlob, "data.json");
+  saveAs(jsonBlob, `Console_Safe_${consoleSafe}_Subaccount_Recovery.json`);
 };
 
 export const getMainSafeConfig = async (
