@@ -126,7 +126,7 @@ export const getMainSafeConfig = async (
 
 export const getConsoleSubaccounts = async (
   consoleSafe: string,
-  provider: ethers.providers.AlchemyProvider
+  provider: ethers.providers.JsonRpcProvider
 ) => {
   console.log({ provider });
   console.log({ consoleSafe });
