@@ -102,9 +102,6 @@ export const generateTxnJson = async (
 
   console.log("JSON", batchJson);
 
-  batchJson.chainId = provider.network.chainId.toString();
-  batchJson.meta.name = `Console Safe ${consoleSafe} Subaccount Recovery`;
-
   const jsonBlob = new Blob([JSON.stringify(batchJson)], {
     type: "application/json",
   });
