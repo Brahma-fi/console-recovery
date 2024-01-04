@@ -94,10 +94,14 @@ export const generateTxnJson = async (
     });
   }
 
+  const description = `This script allows the recovery and full control of subaccount/s ${subaccounts} linked to Console Safe ${consoleSafe}. It removes all operators from the specified subaccount/s and transfers ownership to the Main Account owners. Additionally, it deactivates the Console policy and on-chain SafeGuard for these subaccount/s.
+
+  WARNING: Use this script cautiously. Executing it will disable existing policies and operator permissions, making the subaccount/s directly manageable only by Main Account owners. This action is irreversible and ensures complete control over the subaccount/s without Console-imposed restrictions.`
+
   const batchJson = TxBuilder.batch(consoleSafe, transactions, {
     chainId: provider.network.chainId,
     name: `Console Safe ${consoleSafe} Subaccount Recovery`,
-    description: `Recover complete control over the subaccounts of console safe ${consoleSafe} by removing all operators and swapping the owner to the main safe owner. WARNING: Proceed with caution, this will remove any and all policies on the subaccount and make it impossible for operators to use the subaccount anymore.`,
+    description
   });
 
   console.log("JSON", batchJson);
