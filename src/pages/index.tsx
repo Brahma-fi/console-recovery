@@ -1,9 +1,11 @@
+import Faq from "@/components/Faq";
 import Header from "@/components/Header";
 import SubAccountsView from "@/components/SubAccountsView/indes";
 import { generateTxnJson, getConsoleSubaccounts } from "@/config/actions";
 import { ETHEREUM_RPC, GOERLI_RPC, ARBITRUM_RPC } from "@/config/constants";
 import { ethers } from "ethers";
 import { isAddress } from "ethers/lib/utils";
+import Head from "next/head";
 import { useEffect, useMemo, useState } from "react";
 
 export const AVAILABLE_CHAINS = {
@@ -28,24 +30,21 @@ export default function Home() {
   const [subaccount, setSubaccounts] = useState<string[]>([]);
 
   const provider = useMemo(() => {
-
-    let rpcUrl
+    let rpcUrl;
     switch (userSelection.selectedChain) {
       case "mainnet":
-        rpcUrl = ETHEREUM_RPC
+        rpcUrl = ETHEREUM_RPC;
         break;
       case "goerli":
-        rpcUrl = GOERLI_RPC
+        rpcUrl = GOERLI_RPC;
         break;
       case "arbitrum":
-        rpcUrl = ARBITRUM_RPC
+        rpcUrl = ARBITRUM_RPC;
         break;
       default:
-        rpcUrl = ETHEREUM_RPC
+        rpcUrl = ETHEREUM_RPC;
     }
-    return (
-      new ethers.providers.JsonRpcProvider(rpcUrl)
-    );
+    return new ethers.providers.JsonRpcProvider(rpcUrl);
   }, [userSelection.selectedChain]);
 
   const setConsoleAddressHandler = (consoleAddress: string) => {
@@ -92,10 +91,7 @@ export default function Home() {
     console.log("download handler entered");
     const { consoleAddress, selectedChain, selectedSubaccounts } =
       userSelection;
-    if (
-      !isAddress(consoleAddress) ||
-      selectedSubaccounts.length === 0
-    ) {
+    if (!isAddress(consoleAddress) || selectedSubaccounts.length === 0) {
       console.log("early return added");
       return;
     }
@@ -105,6 +101,10 @@ export default function Home() {
 
   return (
     <main className="px-[6rem] py-[4rem]">
+      <Head>
+        <title>Console recovery</title>
+        <meta property="og:title" content="Console recovery" key="title" />
+      </Head>
       <Header
         consoleAddress={userSelection.consoleAddress}
         selectedChain={userSelection.selectedChain}
@@ -117,6 +117,7 @@ export default function Home() {
         selectAccount={selectSubAccountHandler}
         selectedAccounts={userSelection.selectedSubaccounts}
       />
+      <Faq />
     </main>
   );
 }

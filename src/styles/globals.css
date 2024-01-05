@@ -12,3 +12,7 @@
   scroll-behavior: smooth !important;
   color: black;
 }
+
+html {
+  scrollbar-gutter: stable;
+}
