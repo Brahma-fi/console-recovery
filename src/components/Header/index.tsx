@@ -28,9 +28,16 @@ export default function Header({
           tool offers a simplified and efficient way to generate the necessary
           transaction file in json format for removing guards and policies from
           your Sub-Account Safes in a single batched transaction, fully
-          compatible with the official Safe Transaction Builder at
-          https://app.safe.global/. This tool is hosted on IPFS and fully
-          decentralised.
+          compatible with the official Safe Transaction Builder at&nbsp;
+          <a
+            className="text-blue-400"
+            href="https://app.safe.global/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://app.safe.global/
+          </a>
+          &nbsp;.This tool is hosted on IPFS and fully decentralised.
         </p>
       </div>
       <div className="flex justify-between gap-5">

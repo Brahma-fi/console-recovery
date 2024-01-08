@@ -67,7 +67,7 @@ const FaqData = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          DOCS
+          Brahma Docs
         </a>
       </p>
     ),
