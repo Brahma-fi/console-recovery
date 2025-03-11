@@ -54,7 +54,7 @@ export default function Header({
           <select
             id="countries"
             className="text-[20px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-blue-500 block w-full lg:w-[15rem] p-2.5"
-            defaultValue={AVAILABLE_CHAINS.mainnet}
+            defaultValue={AVAILABLE_CHAINS.Ethereum}
             onChange={(e) => setChain(e.target.value)}
           >
             {Object.keys(AVAILABLE_CHAINS).map((chain) => (
