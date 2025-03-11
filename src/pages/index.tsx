@@ -2,17 +2,23 @@ import Faq from "@/components/Faq";
 import Header from "@/components/Header";
 import SubAccountsView from "@/components/SubAccountsView/indes";
 import { generateTxnJson, getConsoleSubaccounts } from "@/config/actions";
-import { ETHEREUM_RPC, GOERLI_RPC, ARBITRUM_RPC } from "@/config/constants";
+import { PUBLIC_RPCS } from "@/config/constants";
 import { ethers } from "ethers";
 import { isAddress } from "ethers/lib/utils";
 import Head from "next/head";
 import { useEffect, useMemo, useState } from "react";
 
 export const AVAILABLE_CHAINS = {
-  mainnet: "mainnet",
-  arbitrum: "arbitrum",
-  goerli: "goerli",
-};
+  Ethereum: "Ethereum",
+  Arbitrum: "Arbitrum",
+  Blast: "Blast",
+  Mode: "Mode",
+  Sei: "Sei",
+  Base: "Base",
+  Scroll: "Scroll",
+  Swell: "Swell",
+  Berachain: "Berachain",
+} as const;
 
 type UserSelection = {
   consoleAddress: string;
@@ -23,27 +29,17 @@ type UserSelection = {
 export default function Home() {
   const [userSelection, setUserSelection] = useState<UserSelection>({
     consoleAddress: "",
-    selectedChain: AVAILABLE_CHAINS.mainnet,
+    selectedChain: AVAILABLE_CHAINS.Ethereum,
     selectedSubaccounts: [],
   });
 
   const [subaccount, setSubaccounts] = useState<string[]>([]);
 
   const provider = useMemo(() => {
-    let rpcUrl;
-    switch (userSelection.selectedChain) {
-      case "mainnet":
-        rpcUrl = ETHEREUM_RPC;
-        break;
-      case "goerli":
-        rpcUrl = GOERLI_RPC;
-        break;
-      case "arbitrum":
-        rpcUrl = ARBITRUM_RPC;
-        break;
-      default:
-        rpcUrl = ETHEREUM_RPC;
-    }
+    const rpcUrl =
+      PUBLIC_RPCS[userSelection.selectedChain as keyof typeof PUBLIC_RPCS] ??
+      PUBLIC_RPCS.Ethereum;
+
     return new ethers.providers.JsonRpcProvider(rpcUrl);
   }, [userSelection.selectedChain]);
 
