@@ -28,7 +28,7 @@ jobs:
         run: npm i
 
       - name: Build project
-        run: npm run build
+        run: NEXT_PUBLIC_PRIVY_APP_ID=clwko6rul0a5r10xnb2ikkjhd npm run build
 
       - name: Deploy to IPFS
         uses: ipfs/ipfs-deploy-action@v1
