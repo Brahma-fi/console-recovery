@@ -31,7 +31,7 @@ jobs:
         run: NEXT_PUBLIC_PRIVY_APP_ID=clwko6rul0a5r10xnb2ikkjhd npm run build
 
       - name: Deploy to IPFS
-        uses: ipfs/ipfs-deploy-action@v1
+        uses: ipfs/ipfs-deploy-action@v1.7.0
         id: deploy
         with:
           path-to-deploy: dist # Change this to your build output directory
