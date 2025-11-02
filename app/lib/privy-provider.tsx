@@ -19,7 +19,7 @@ export function PrivyClientProvider({
           logo: "/icons/brahma-logo.png",
         },
         // Login methods
-        loginMethods: ["wallet", "email", "google"],
+        loginMethods: ["email", "google"],
         // Embedded wallet configuration - configure for Ethereum and Solana
       }}
     >

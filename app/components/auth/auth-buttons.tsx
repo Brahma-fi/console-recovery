@@ -13,19 +13,9 @@ export function AuthButtons() {
 
   return (
     <div className="flex flex-col gap-4 w-full max-w-md">
-      <Button onClick={handleLogin} fullWidth>
-        <WalletIcon />
-        Connect Wallet
-      </Button>
-
-      <Button onClick={handleLogin} variant="secondary" fullWidth>
-        <EmailIcon />
-        Email / Passkey
-      </Button>
-
       <Button onClick={handleLogin} variant="secondary" fullWidth>
         <GoogleIcon />
-        Continue with Google
+        Continue with Google or Email
       </Button>
     </div>
   );
