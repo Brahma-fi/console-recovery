@@ -18,8 +18,8 @@ export default function WalletExport() {
             </h2>
 
             <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-              Secure your account with multiple authentication methods. Connect
-              your wallet, use email with passkeys, or sign in with Google.
+              Connect via google login or email. Then you will be able to export
+              your private key or secret recovery phrase.
             </p>
           </div>
 
