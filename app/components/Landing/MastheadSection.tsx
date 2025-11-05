@@ -20,9 +20,9 @@ export default function MastheadSection() {
       <div className="flex flex-col gap-[12px]">
         <TitleText>Brahma.fi recovery tools</TitleText>
         <SubtitleText>
-          This page helps you keep access to your Sub-accounts and Automations,
-          or convert your Google/email login into a wallet login after the
-          Brahma UI shuts down.
+          Secure and migrate your Brahma setup, easily convert Sub-accounts and
+          Automation accounts into Safes, or switch from Google/email login to
+          wallet access.
         </SubtitleText>
         {/* <SubtitleText>
           <Link
