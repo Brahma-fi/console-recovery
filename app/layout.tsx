@@ -21,6 +21,25 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
+  openGraph: {
+    title: APP_CONFIG.name,
+    description: APP_CONFIG.description,
+    images: [
+      {
+        url: "/images/Recovery.png",
+        width: 1200,
+        height: 630,
+        alt: "Brahma Account Recovery",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: APP_CONFIG.name,
+    description: APP_CONFIG.description,
+    images: ["/images/Recovery.png"],
+  },
 };
 
 export default function RootLayout({

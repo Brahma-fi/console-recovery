@@ -25,8 +25,9 @@ export const THEME_COLORS = {
 
 // App Configuration
 export const APP_CONFIG = {
-  name: "Brahma Account Recovery",
-  description: "Secure account recovery powered by Brahma",
+  name: "Brahma Recovery Tools",
+  description:
+    "Secure and migrate your Brahma setup, convert Sub-accounts and Automations into Safes, or move from Google/email login to wallet login.",
 } as const;
 
 export const LINKS = {
