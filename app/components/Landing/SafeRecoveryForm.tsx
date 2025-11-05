@@ -3,18 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { ethers } from "ethers";
 import { isAddress } from "ethers/lib/utils";
-import ConsoleLogo from "@/app/components/icons/ConsoleLogo";
 import { ConsoleInput } from "@/app/components/safe-recovery/console-input";
 import { SubaccountsList } from "@/app/components/safe-recovery/subaccounts-list";
 import {
   generateTxnJson,
   getConsoleSubaccounts,
 } from "@/app/lib/blockchain-actions";
-import {
-  AVAILABLE_CHAINS,
-  PUBLIC_RPCS,
-  type ChainName,
-} from "@/app/config/blockchain";
+import { PUBLIC_RPCS, type ChainName } from "@/app/config/blockchain";
 
 type UserSelection = {
   consoleAddress: string;
@@ -22,7 +17,7 @@ type UserSelection = {
   selectedSubaccounts: string[];
 };
 
-export default function SafeRecovery() {
+export default function SafeRecoveryForm() {
   const [userSelection, setUserSelection] = useState<UserSelection>({
     consoleAddress: "",
     selectedChain: "Ethereum",
@@ -120,52 +115,24 @@ export default function SafeRecovery() {
   };
 
   return (
-    <main className="min-h-screen px-4 py-12 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto space-y-12">
-        {/* Header */}
-        <div className="flex flex-col items-center text-center space-y-6">
-          <div className="flex items-center gap-3">
-            <ConsoleLogo width={56} height={56} color="#a5f3fc" />
-            <h1 className="text-5xl md:text-6xl font-bold text-text-primary">
-              Brahma
-            </h1>
-          </div>
+    <div className="flex flex-col gap-6">
+      {/* Console Input Section */}
+      <ConsoleInput
+        consoleAddress={userSelection.consoleAddress}
+        selectedChain={userSelection.selectedChain}
+        onAddressChange={setConsoleAddressHandler}
+        onChainChange={setChainHandler}
+      />
 
-          <h2 className="text-3xl md:text-4xl font-semibold text-accent-primary">
-            Safe Recovery
-          </h2>
-        </div>
-
-        {/* Console Input Section */}
-        <div className="flex justify-center">
-          <ConsoleInput
-            consoleAddress={userSelection.consoleAddress}
-            selectedChain={userSelection.selectedChain}
-            onAddressChange={setConsoleAddressHandler}
-            onChainChange={setChainHandler}
-          />
-        </div>
-
-        {/* Subaccounts List Section */}
-        {isAddress(userSelection.consoleAddress) && (
-          <div className="flex justify-center">
-            <SubaccountsList
-              subaccounts={subaccounts}
-              selectedAccounts={userSelection.selectedSubaccounts}
-              onSelectAccount={selectSubAccountHandler}
-              onDownloadClick={onDownloadClickHandler}
-              isLoading={isLoading}
-            />
-          </div>
-        )}
-
-        {/* Footer */}
-        <div className="text-center text-text-muted text-sm pt-8">
-          <p>
-            Generate recovery transactions • Import to Safe • Execute securely
-          </p>
-        </div>
-      </div>
-    </main>
+      {/* Subaccounts List Section */}
+      <SubaccountsList
+        userInput={userSelection.consoleAddress}
+        subaccounts={subaccounts}
+        selectedAccounts={userSelection.selectedSubaccounts}
+        onSelectAccount={selectSubAccountHandler}
+        onDownloadClick={onDownloadClickHandler}
+        isLoading={isLoading}
+      />
+    </div>
   );
 }

@@ -1,14 +1,34 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import ConsoleLogo from "@/app/components/icons/ConsoleLogo";
+import Image from "next/image";
+import { NAV_IDS } from "../config/constants";
+
+// Navigation items configuration
+const NAV_ITEMS = [
+  {
+    label: "Sub-Account recovery",
+    href: `/#${NAV_IDS.SUBACCOUNT_RECOVER}`,
+  },
+  {
+    label: "Mail login",
+    href: `/#${NAV_IDS.MAIL_LOGIN}`,
+  },
+] as const;
+
+// Reusable NavLink component
+function NavLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="text-white text-sm font-medium leading-6 underline decoration-solid"
+    >
+      {label}
+    </Link>
+  );
+}
 
 export function Navigation() {
-  const pathname = usePathname();
-
-  const isActive = (path: string) => pathname === path;
-
   return (
     <nav className="border-b border-background-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,37 +36,27 @@ export function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center hover:opacity-80 transition-opacity"
           >
-            <ConsoleLogo width={32} height={32} color="#a5f3fc" />
-            <span className="text-xl font-bold text-text-primary">Brahma</span>
+            <Image
+              src="/icons/BrahmaLogoWithName.png"
+              alt="Brahma Logo"
+              width={120}
+              height={32}
+            />
           </Link>
 
           {/* Navigation Links */}
-          <div className="flex gap-1">
-            <Link
-              href="/"
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                isActive("/")
-                  ? "bg-accent-primary text-background-primary"
-                  : "text-text-secondary hover:text-text-primary hover:bg-background-card"
-              }`}
-            >
-              Safe Recovery
-            </Link>
-            <Link
-              href="/wallet-export"
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                isActive("/wallet-export")
-                  ? "bg-accent-primary text-background-primary"
-                  : "text-text-secondary hover:text-text-primary hover:bg-background-card"
-              }`}
-            >
-              Wallet Export
-            </Link>
+          <div className="flex gap-6">
+            {NAV_ITEMS.map((item) => (
+              <NavLink key={item.href} href={item.href} label={item.label} />
+            ))}
           </div>
         </div>
       </div>
     </nav>
   );
 }
+
+// Export NAV_IDS for use in other components
+export { NAV_IDS };

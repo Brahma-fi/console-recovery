@@ -1,7 +1,6 @@
 "use client";
 
 import { usePrivy } from "@privy-io/react-auth";
-import { Button } from "@/app/components/ui/button";
 
 export function AuthButtons() {
   const { login } = usePrivy();
@@ -12,46 +11,15 @@ export function AuthButtons() {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full max-w-md">
-      <Button onClick={handleLogin} variant="secondary" fullWidth>
+    <div className="flex flex-col gap-4 w-full">
+      <button
+        onClick={handleLogin}
+        className="flex w-[600px] px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 bg-white text-black cursor-pointer gap-[6px] transition-all"
+      >
         <GoogleIcon />
         Continue with Google or Email
-      </Button>
+      </button>
     </div>
-  );
-}
-
-function WalletIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M21 18V19C21 20.1 20.1 21 19 21H5C3.89 21 3 20.1 3 19V5C3 3.9 3.89 3 5 3H19C20.1 3 21 3.9 21 5V6H12C10.89 6 10 6.9 10 8V16C10 17.1 10.89 18 12 18H21ZM12 16H22V8H12V16ZM16 13.5C15.17 13.5 14.5 12.83 14.5 12C14.5 11.17 15.17 10.5 16 10.5C16.83 10.5 17.5 11.17 17.5 12C17.5 12.83 16.83 13.5 16 13.5Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function EmailIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"
-        fill="currentColor"
-      />
-    </svg>
   );
 }
 

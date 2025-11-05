@@ -28,3 +28,15 @@ export const APP_CONFIG = {
   name: "Brahma Account Recovery",
   description: "Secure account recovery powered by Brahma",
 } as const;
+
+export const LINKS = {
+  TWITTER: "https://x.com/brahmaFi",
+  SAFE_GLOBAL_UI: "https://app.safe.global",
+  YOUTUBE: "https://www.youtube.com/@brahmadotfi",
+};
+
+// Navigation IDs
+export const NAV_IDS = {
+  SUBACCOUNT_RECOVER: "subaccount-recovery",
+  MAIL_LOGIN: "mail-login",
+} as const;

@@ -1,6 +1,7 @@
 "use client";
 
 import { AVAILABLE_CHAINS, ChainName } from "@/app/config/blockchain";
+import ArrowDownIcon from "../icons/ArrowDownIcon";
 
 interface ConsoleInputProps {
   consoleAddress: string;
@@ -17,46 +18,21 @@ export function ConsoleInput({
 }: ConsoleInputProps) {
   return (
     <div className="w-full max-w-4xl space-y-6">
-      {/* Description */}
-      <div className="space-y-3">
-        <h3 className="text-xl font-bold text-text-primary">
-          Brahma Console Sub-Account Safe Detachment Tool
-        </h3>
-        <p className="text-text-secondary text-sm leading-relaxed">
-          Welcome to the Brahma Console Sub-Account Safe Recovery Page. This
-          tool offers a simplified and efficient way to generate the necessary
-          transaction file in JSON format for removing guards and policies from
-          your Sub-Account Safes in a single batched transaction, fully
-          compatible with the official Safe Transaction Builder at{" "}
-          <a
-            href="https://app.safe.global/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent-primary hover:text-accent-hover transition-colors"
-          >
-            https://app.safe.global/
-          </a>
-          .
-        </p>
-      </div>
-
       {/* Input Fields */}
       <div className="flex flex-col md:flex-row gap-4">
         {/* Console Address Input */}
-        <div className="flex-1">
-          <input
-            type="text"
-            className="w-full bg-background-card border border-text-muted text-text-primary text-sm rounded-lg focus:ring-2 focus:ring-accent-primary focus:border-accent-primary p-3 transition-all"
-            placeholder="Enter console address (0x...)"
-            value={consoleAddress}
-            onChange={(e) => onAddressChange(e.target.value)}
-          />
-        </div>
+        <input
+          type="text"
+          className="flex items-center px-3 py-2 gap-1 flex-1 rounded-lg border border-[#494C56] bg-[#0D0D10] text-white text-sm focus:ring-2 focus:ring-accent-primary focus:border-accent-primary transition-all"
+          placeholder="Paste your Brahma Account address"
+          value={consoleAddress}
+          onChange={(e) => onAddressChange(e.target.value)}
+        />
 
         {/* Chain Selector */}
-        <div className="md:w-48">
+        <div className="relative w-[138px] shrink-0">
           <select
-            className="w-full bg-background-card border border-text-muted text-text-primary text-sm rounded-lg focus:ring-2 focus:ring-accent-primary focus:border-accent-primary p-3 transition-all cursor-pointer"
+            className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-[#494C56] bg-[#292930] text-white text-sm focus:ring-2 focus:ring-accent-primary focus:border-accent-primary transition-all cursor-pointer appearance-none pr-8"
             value={selectedChain}
             onChange={(e) => onChainChange(e.target.value as ChainName)}
           >
@@ -66,6 +42,9 @@ export function ConsoleInput({
               </option>
             ))}
           </select>
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+            <ArrowDownIcon width={16} height={16} color="#E6E8ED" />
+          </div>
         </div>
       </div>
     </div>
