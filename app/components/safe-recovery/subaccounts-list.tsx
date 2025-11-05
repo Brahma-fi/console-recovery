@@ -59,7 +59,7 @@ export function SubaccountsList({
         <button
           onClick={onDownloadClick}
           disabled={isDownloadDisabled}
-          className={`flex w-[600px] px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 transition-all ${
+          className={`flex w-full px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 transition-all ${
             isDownloadDisabled
               ? "bg-[#494C56] text-[#A8ADB5] cursor-not-allowed gap-1"
               : "bg-white text-black cursor-pointer gap-[6px]"

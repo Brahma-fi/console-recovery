@@ -20,15 +20,6 @@ export function ConsoleInput({
     <div className="w-full max-w-4xl space-y-6">
       {/* Input Fields */}
       <div className="flex flex-col md:flex-row gap-4">
-        {/* Console Address Input */}
-        <input
-          type="text"
-          className="flex items-center px-3 py-2 gap-1 flex-1 rounded-lg border border-[#494C56] bg-[#0D0D10] text-white text-sm focus:ring-2 focus:ring-accent-primary focus:border-accent-primary transition-all"
-          placeholder="Paste your Brahma Account address"
-          value={consoleAddress}
-          onChange={(e) => onAddressChange(e.target.value)}
-        />
-
         {/* Chain Selector */}
         <div className="relative w-[138px] shrink-0">
           <select
@@ -46,6 +37,14 @@ export function ConsoleInput({
             <ArrowDownIcon width={16} height={16} color="#E6E8ED" />
           </div>
         </div>
+        {/* Console Address Input */}
+        <input
+          type="text"
+          className="flex items-center px-3 py-2 gap-1 flex-1 rounded-lg border border-[#494C56] bg-[#0D0D10] text-white text-sm focus:ring-2 focus:ring-accent-primary focus:border-accent-primary transition-all"
+          placeholder="Paste your Brahma Account address"
+          value={consoleAddress}
+          onChange={(e) => onAddressChange(e.target.value)}
+        />
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export function AuthButtons() {
     <div className="flex flex-col gap-4 w-full">
       <button
         onClick={handleLogin}
-        className="flex w-[600px] px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 bg-white text-black cursor-pointer gap-[6px] transition-all"
+        className="flex w-full px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 bg-white text-black cursor-pointer gap-[6px] transition-all"
       >
         <GoogleIcon />
         Continue with Google or Email
