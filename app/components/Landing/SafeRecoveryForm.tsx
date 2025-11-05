@@ -26,6 +26,7 @@ export default function SafeRecoveryForm() {
 
   const [subaccounts, setSubaccounts] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // Create provider based on selected chain
   const provider = useMemo(() => {
@@ -104,6 +105,7 @@ export default function SafeRecoveryForm() {
       return;
     }
 
+    setIsDownloading(true);
     try {
       await generateTxnJson(consoleAddress, selectedSubaccounts, provider);
     } catch (error) {
@@ -111,6 +113,8 @@ export default function SafeRecoveryForm() {
       alert(
         "Error generating transaction JSON. Please check console for details."
       );
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -132,6 +136,7 @@ export default function SafeRecoveryForm() {
         onSelectAccount={selectSubAccountHandler}
         onDownloadClick={onDownloadClickHandler}
         isLoading={isLoading}
+        isDownloading={isDownloading}
       />
     </div>
   );

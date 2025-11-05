@@ -9,6 +9,7 @@ interface SubaccountsListProps {
   onSelectAccount: (account: string) => void;
   onDownloadClick: () => void;
   isLoading?: boolean;
+  isDownloading?: boolean;
 }
 
 export function SubaccountsList({
@@ -18,8 +19,9 @@ export function SubaccountsList({
   onSelectAccount,
   onDownloadClick,
   isLoading = false,
+  isDownloading = false,
 }: SubaccountsListProps) {
-  const isDownloadDisabled = selectedAccounts.length === 0;
+  const isDownloadDisabled = selectedAccounts.length === 0 || isDownloading;
 
   return (
     <div className="w-full max-w-4xl space-y-6">
@@ -65,8 +67,17 @@ export function SubaccountsList({
               : "bg-white text-black cursor-pointer gap-[6px]"
           }`}
         >
-          <DownloadIcon disabled={isDownloadDisabled} />
-          Download Json file
+          {isDownloading ? (
+            <>
+              <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-400 border-t-black"></div>
+              Generating...
+            </>
+          ) : (
+            <>
+              <DownloadIcon disabled={isDownloadDisabled} />
+              Download Json file
+            </>
+          )}
         </button>
       </div>
     </div>
