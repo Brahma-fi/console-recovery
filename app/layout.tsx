@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: APP_CONFIG.description,
     images: [
       {
-        url: "/images/OG.png",
+        url: "/images/OG.webp",
         width: 1200,
         height: 630,
         alt: "Brahma Account Recovery",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: APP_CONFIG.name,
     description: APP_CONFIG.description,
-    images: ["/images/OG.png"],
+    images: ["/images/OG.webp"],
   },
 };
 
