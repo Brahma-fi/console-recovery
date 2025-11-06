@@ -15,29 +15,28 @@ export default function SubaccountRecovery() {
       <div className="flex flex-col gap-[24px]">
         <div className="flex flex-col gap-[12px]">
           <TitleText iconUrl="/icons/SafeIcon.png">
-            Brahma Sub-Account recovery tool
+            Sub-Account recovery tool
           </TitleText>
           <SubtitleText>
-            The tool provides a simple, efficient way to convert your
-            Sub-Account into a Safe fully controlled by your own EOA wallet.
+            Convert your Sub-Account or Automation into a Safe fully controlled
+            by your own EOA wallet.
           </SubtitleText>
 
           <SubtitleText>
-            It generates a JSON transaction file that removes guards and
-            policies from your Sub-Account Safes in a single batched
-            transaction, fully compatible with the official Safe Transaction
-            Builder at app.safe.global.
+            1. Enter your Brahma Account address, associated Sub-Accounts will
+            be automatically mapped below.
           </SubtitleText>
-
-          <SubtitleText>1. Paste your Brahma Sub-Account address.</SubtitleText>
-          <SubtitleText>2. Generate and download Json file.</SubtitleText>
+          <SubtitleText>2. Generate and download JSON file.</SubtitleText>
           <SubtitleText>
             3. Connect your owning EOA to the Safe UI and execute the file
             through Safe’s Transaction Builder.
           </SubtitleText>
+          <SubtitleText>
+            4. Access your Sub-Accounts as individual Safes.
+          </SubtitleText>
         </div>
 
-        <div className="flex flex-col gap-[8px]">
+        <div className="flex flex-col md:flex-row gap-[8px] md:gap-[24px]">
           <LinkItem
             href={LINKS.YOUTUBE}
             iconUrl="/icons/YoutubeIcon.png"
@@ -46,7 +45,7 @@ export default function SubaccountRecovery() {
           <LinkItem
             href="https://help.safe.global/en/articles/234052-transaction-builder"
             iconUrl="/icons/SafeLogoIcon.png"
-            label="How to create a transaction with the Transaction Builder Safe App"
+            label="Transaction Builder in Safe App"
           />
         </div>
 

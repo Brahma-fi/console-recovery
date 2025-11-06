@@ -25,9 +25,41 @@ export function SubaccountsList({
 
   return (
     <div className="w-full max-w-4xl space-y-6">
+      {/* Download Button */}
+      <div className="flex justify-center">
+        <button
+          onClick={onDownloadClick}
+          disabled={isDownloadDisabled}
+          className={`flex w-full px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 transition-all ${
+            isDownloadDisabled
+              ? "bg-[#494C56] text-[#A8ADB5] cursor-not-allowed gap-1"
+              : "bg-white text-black cursor-pointer gap-[6px]"
+          }`}
+        >
+          {isDownloading ? (
+            <>
+              <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-400 border-t-black"></div>
+              Generating...
+            </>
+          ) : (
+            <>
+              <DownloadIcon disabled={isDownloadDisabled} />
+              Download Json file
+            </>
+          )}
+        </button>
+      </div>
       {/* Subaccounts Container */}
-      {isAddress(userInput) && (
-        <div className="bg-slate-900/40 rounded-xl p-6 border border-text-muted/20 max-h-120 overflow-auto">
+      {!isAddress(userInput) ? (
+        // Placeholder when no input
+        <div className="flex py-7 px-2 justify-center items-center gap-1 self-stretch rounded-lg border border-dashed border-[#343436]">
+          <p className="text-[#494C56] text-sm font-medium leading-6">
+            Sub-Accounts list
+          </p>
+        </div>
+      ) : (
+        // Show when valid address is entered
+        <div className="bg-[#18181C] rounded-xl p-6 border border-text-muted/20 max-h-120 overflow-auto">
           {isLoading ? (
             <div className="flex items-center justify-center py-8">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-primary"></div>
@@ -55,31 +87,6 @@ export function SubaccountsList({
           )}
         </div>
       )}
-
-      {/* Download Button */}
-      <div className="flex justify-center">
-        <button
-          onClick={onDownloadClick}
-          disabled={isDownloadDisabled}
-          className={`flex w-full px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 transition-all ${
-            isDownloadDisabled
-              ? "bg-[#494C56] text-[#A8ADB5] cursor-not-allowed gap-1"
-              : "bg-white text-black cursor-pointer gap-[6px]"
-          }`}
-        >
-          {isDownloading ? (
-            <>
-              <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-400 border-t-black"></div>
-              Generating...
-            </>
-          ) : (
-            <>
-              <DownloadIcon disabled={isDownloadDisabled} />
-              Download Json file
-            </>
-          )}
-        </button>
-      </div>
     </div>
   );
 }
@@ -97,7 +104,7 @@ function SubaccountItem({
 }: SubaccountItemProps) {
   return (
     <div
-      className="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-900/90 transition-colors cursor-pointer"
+      className="flex items-center gap-4 p-3 rounded-lg hover:bg-[#252527] transition-colors cursor-pointer"
       onClick={onSelect}
     >
       {/* Checkbox */}

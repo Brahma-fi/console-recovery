@@ -31,7 +31,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
 export function Navigation() {
   return (
     <nav className="border-b border-background-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl md:max-w-full mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
@@ -47,7 +47,7 @@ export function Navigation() {
           </Link>
 
           {/* Navigation Links */}
-          <div className="flex gap-6">
+          <div className="flex gap-6 md:hidden">
             {NAV_ITEMS.map((item) => (
               <NavLink key={item.href} href={item.href} label={item.label} />
             ))}

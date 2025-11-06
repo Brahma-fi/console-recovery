@@ -10,19 +10,23 @@ export default function Footer() {
     return new Date().getFullYear().toString();
   }
   return (
-    <div className="flex flex-col pt-[64px] gap-[102px]">
-      <div className="flex flex-col gap-[16px]">
+    <div className="flex flex-col pt-[64px] md:pt-0 gap-[102px]">
+      {/* <div className="flex flex-col gap-[16px]">
         <TitleText>Links</TitleText>
         <div className="flex flex-col">
-          {/* <LinkItem href={LINKS.TWITTER} label="Brahma joins Polymarket" /> */}
+          <LinkItem href={LINKS.TWITTER} label="Brahma joins Polymarket" />
           <LinkItem href={LINKS.SAFE_GLOBAL_UI} label="Safe Global UI" />
           <LinkItem href={LINKS.TWITTER} label="Brahma on X" />
         </div>
-      </div>
+      </div> */}
 
       <div className="flex justify-between w-full pt-[24px] pb-[16px] border-t border-[#FFFFFF29]">
-        <BottonText text={getCurrentYear()} />
-        <BottonText text="Brahma Team" />
+        <div className="w-full flex justify-center">
+          <BottonText text={getCurrentYear()} />
+        </div>
+        <div className="w-full flex justify-center">
+          <BottonText text="Brahma Team" />
+        </div>
       </div>
     </div>
   );

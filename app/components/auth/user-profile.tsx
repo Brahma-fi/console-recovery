@@ -28,7 +28,7 @@ export function UserProfile() {
   };
 
   return (
-    <div className="w-full max-w-md bg-slate-900/40 rounded-xl p-6 space-y-4">
+    <div className="w-full max-w-md bg-[#18181C] rounded-xl p-6 space-y-4">
       <h2 className="text-2xl font-bold text-accent-primary">
         Account Connected
       </h2>
