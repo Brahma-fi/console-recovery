@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
       </div> */}
 
-      <div className="flex justify-between w-full pt-[24px] pb-[16px] border-t border-[#FFFFFF29]">
+      <div className="flex justify-between w-full py-[24px] border-t border-[#FFFFFF29]">
         <div className="w-full flex justify-center">
           <BottonText text={getCurrentYear()} />
         </div>

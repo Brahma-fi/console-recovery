@@ -20,18 +20,24 @@ export default function SubaccountRecovery() {
           <SubtitleText>
             Convert your Sub-Account or Automation into a Safe fully controlled
             by your own EOA wallet.
-          </SubtitleText>
-
+          </SubtitleText>{" "}
           <SubtitleText>
+            It generates a JSON transaction file that removes guards and
+            policies from your Sub-Account(s), fully compatible with the
+            official Safe Transaction Builder at app.safe.global.
+          </SubtitleText>
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
             1. Enter your Brahma Account address, associated Sub-Accounts will
             be automatically mapped below.
           </SubtitleText>
-          <SubtitleText>2. Generate and download JSON file.</SubtitleText>
-          <SubtitleText>
-            3. Connect your owning EOA to the Safe UI and execute the file
-            through Safe’s Transaction Builder.
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
+            2. Generate and download JSON file.
           </SubtitleText>
-          <SubtitleText>
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
+            3. Connect your owning EOA to the Safe UI and execute the file
+            through Safe&apos;s Transaction Builder.
+          </SubtitleText>
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
             4. Access your Sub-Accounts as individual Safes.
           </SubtitleText>
         </div>

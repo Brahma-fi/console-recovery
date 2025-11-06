@@ -23,13 +23,17 @@ export default function WalletLoginView() {
             private key, you’ll need it to access your account in the Safe UI.
           </SubtitleText>
 
-          <SubtitleText>1. Connect with Google or email.</SubtitleText>
-          <SubtitleText>2. Copy your private key.</SubtitleText>
-          <SubtitleText>
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
+            1. Connect with Google or email.
+          </SubtitleText>
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
+            2. Copy your private key.
+          </SubtitleText>
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
             3. Import it into your favourite wallet (eg. Phantom, Rabby,
             Metamask, etc).
           </SubtitleText>
-          <SubtitleText>
+          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
             4. Connect the imported wallet to Safe.global UI to login your
             Account as Safe.
           </SubtitleText>
