@@ -12,7 +12,7 @@ export default function MastheadSection() {
           alt="Recovery"
           width={1920}
           height={1080}
-          className="w-full h-full object-cover block md:hidden"
+          className="w-full h-full object-cover block lg:hidden"
         />
         {/* Desktop Image */}
         <Image
@@ -20,7 +20,7 @@ export default function MastheadSection() {
           alt="Recovery"
           width={1920}
           height={1080}
-          className="w-full h-full object-cover hidden md:block"
+          className="w-full h-full object-cover hidden lg:block"
         />
       </div>
     </div>

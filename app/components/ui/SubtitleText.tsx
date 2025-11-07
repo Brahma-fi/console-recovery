@@ -10,7 +10,7 @@ export default function SubtitleText({
   className = "",
 }: SubtitleTextProps) {
   return (
-    <p className={`text-[#CBCED1] text-base leading-6 ${className}`}>
+    <p className={`text-[#ACB2BC] text-base leading-6 ${className}`}>
       {children}
     </p>
   );

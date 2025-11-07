@@ -13,30 +13,33 @@ export default function WalletLoginView() {
   return (
     <ContentBox id={NAV_IDS.MAIL_LOGIN}>
       <div className="flex flex-col gap-[24px]">
-        <div className="flex flex-col gap-[12px]">
-          <TitleText iconUrl="/icons/WalletIcon.png">
-            Convert Privy mail login to a wallet login
-          </TitleText>
-          <SubtitleText>
-            If you created your Brahma Account using email via Privy, a wallet
-            was automatically generated for you. Use this tool to export its
-            private key, you’ll need it to access your account in the Safe UI.
-          </SubtitleText>
-
-          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
-            1. Connect with Google or email.
-          </SubtitleText>
-          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
-            2. Copy your private key.
-          </SubtitleText>
-          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
-            3. Import it into your favourite wallet (eg. Phantom, Rabby,
-            Metamask, etc).
-          </SubtitleText>
-          <SubtitleText className="text-[#E6E8ED] text-[16px] font-medium">
-            4. Connect the imported wallet to Safe.global UI to login your
-            Account as Safe.
-          </SubtitleText>
+        <div className="flex flex-col gap-[28px]">
+          <div className="flex flex-col gap-[12px]">
+            <TitleText iconUrl="/icons/WalletIcon.png">
+              Convert Privy mail login to a wallet login
+            </TitleText>
+            <SubtitleText>
+              If you created your Brahma Account using email via Privy, a wallet
+              was automatically generated for you. Use this tool to export its
+              private key, you’ll need it to access your account in the Safe UI.
+            </SubtitleText>
+          </div>
+          <div className="flex flex-col gap-[12px]">
+            <SubtitleText className="text-[#E6E8ED] text-[16px] ">
+              1. Connect with Google or email.
+            </SubtitleText>
+            <SubtitleText className="text-[#E6E8ED] text-[16px] ">
+              2. Copy your private key.
+            </SubtitleText>
+            <SubtitleText className="text-[#E6E8ED] text-[16px] ">
+              3. Import it into your favourite wallet (eg. Phantom, Rabby,
+              Metamask, etc).
+            </SubtitleText>
+            <SubtitleText className="text-[#E6E8ED] text-[16px] ">
+              4. Connect the imported wallet to Safe.global UI to login your
+              Account as Safe.
+            </SubtitleText>
+          </div>
         </div>
 
         {/* wallet Recovery button and view */}

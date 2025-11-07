@@ -20,7 +20,7 @@ export default function TitleText({ children, iconUrl }: TitleTextProps) {
           />
         </div>
       )}
-      <h2 className="text-[#E6E8ED] text-2xl font-semibold leading-[28px]">
+      <h2 className="text-[#E6E8ED] text-2xl font-semibold leading-[28px] min-h-[56px] flex items-center">
         {children}
       </h2>
     </div>

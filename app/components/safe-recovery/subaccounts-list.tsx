@@ -43,8 +43,12 @@ export function SubaccountsList({
             </>
           ) : (
             <>
-              <DownloadIcon disabled={isDownloadDisabled} />
-              Download Json file
+              <DownloadIcon disabled={isDownloadDisabled} />{" "}
+              {selectedAccounts.length > 0
+                ? ` Download Json file (${selectedAccounts.length} Selected)`
+                : userInput
+                ? "Select Sub-Accounts to download JSON"
+                : "Enter Account Address to view Sub-Accounts"}
             </>
           )}
         </button>
@@ -70,7 +74,7 @@ export function SubaccountsList({
           ) : subaccounts.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-text-muted">
-                No subaccounts found for this console address
+                No Sub-Accounts found for this Brahma Account address
               </p>
             </div>
           ) : (
