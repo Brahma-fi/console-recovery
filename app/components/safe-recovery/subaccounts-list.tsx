@@ -108,8 +108,9 @@ function SubaccountItem({
 }: SubaccountItemProps) {
   return (
     <div
-      className="flex items-center gap-4 p-3 rounded-lg hover:bg-[#252527] transition-colors cursor-pointer"
+      className="flex flex-row items-center gap-4 p-3 rounded-lg hover:bg-[#252527] transition-colors cursor-pointer"
       onClick={onSelect}
+      style={{ wordBreak: "break-all" }}
     >
       {/* Checkbox */}
       <div
@@ -137,9 +138,13 @@ function SubaccountItem({
           </svg>
         )}
       </div>
-
       {/* Address */}
-      <p className="text-text-primary font-mono text-sm flex-1">{address}</p>
+      <p className="text-text-primary font-mono text-xs sm:text-sm flex-1 break-all hidden md:block ">
+        {address.slice(0, 15)}...{address.slice(-15)}
+      </p>{" "}
+      <p className="text-text-primary font-mono text-xs sm:text-sm flex-1 break-all md:hidden">
+        {address.slice(0, 10)}...{address.slice(-10)}
+      </p>
     </div>
   );
 }
