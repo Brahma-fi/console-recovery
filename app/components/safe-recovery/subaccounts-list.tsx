@@ -63,7 +63,7 @@ export function SubaccountsList({
         </div>
       ) : (
         // Show when valid address is entered
-        <div className="bg-[#18181C] rounded-xl p-6 border border-text-muted/20 max-h-120 overflow-auto">
+        <div className="bg-[#18181C] rounded-xl p-1 md:p-3 border border-text-muted/20 max-h-120 overflow-auto">
           {isLoading ? (
             <div className="flex items-center justify-center py-8">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-primary"></div>
@@ -139,12 +139,9 @@ function SubaccountItem({
         )}
       </div>
       {/* Address */}
-      <p className="text-text-primary font-mono text-xs sm:text-sm flex-1 break-all hidden md:block ">
-        {address.slice(0, 15)}...{address.slice(-15)}
+      <p className="text-text-primary font-mono text-xs sm:text-sm flex-1 break-all">
+        {address}
       </p>{" "}
-      <p className="text-text-primary font-mono text-xs sm:text-sm flex-1 break-all md:hidden">
-        {address.slice(0, 10)}...{address.slice(-10)}
-      </p>
     </div>
   );
 }
