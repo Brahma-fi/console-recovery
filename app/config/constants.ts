@@ -33,7 +33,7 @@ export const APP_CONFIG = {
 export const LINKS = {
   TWITTER: "https://x.com/brahmaFi",
   SAFE_GLOBAL_UI: "https://app.safe.global",
-  YOUTUBE: "https://www.youtube.com/@brahmadotfi",
+  YOUTUBE: "https://youtu.be/GLECu-9wt_E",
 };
 
 // Navigation IDs

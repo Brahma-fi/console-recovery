@@ -9,6 +9,15 @@ import TitleText from "../ui/TitleText";
 import SafeRecoveryForm from "./SafeRecoveryForm";
 import { LINKS, NAV_IDS } from "@/app/config/constants";
 
+const STEPS = [
+  "Enter your Brahma Account address, associated Sub-Accounts will be automatically mapped below.",
+  "Generate and download JSON file.",
+  "Connect your EOA to the Safe Ul and open Brahma Account.",
+  "Go to the Apps tab and launch Transaction Builder.",
+  "Use the JSON file to create a transaction. Execute it.",
+  "Access your Sub-Account as individual Safe.",
+];
+
 export default function SubaccountRecovery() {
   return (
     <ContentBox id={NAV_IDS.SUBACCOUNT_RECOVER}>
@@ -29,29 +38,20 @@ export default function SubaccountRecovery() {
             </SubtitleText>
           </div>
           <div className="flex flex-col gap-[12px]">
-            <SubtitleText className="text-[#E6E8ED] text-[16px]">
-              1. Enter your Brahma Account address, associated Sub-Accounts will
-              be automatically mapped below.
-            </SubtitleText>
-            <SubtitleText className="text-[#E6E8ED] text-[16px] ">
-              2. Generate and download JSON file.
-            </SubtitleText>
-            <SubtitleText className="text-[#E6E8ED] text-[16px] ">
-              3. Connect your owning EOA to the Safe UI and execute the file
-              through Safe&apos;s Transaction Builder.
-            </SubtitleText>
-            <SubtitleText className="text-[#E6E8ED] text-[16px] ">
-              4. Access your Sub-Accounts as individual Safes.
-            </SubtitleText>
+            {STEPS.map((step, idx) => (
+              <SubtitleText key={step} className="text-[#E6E8ED] text-[16px]">
+                {idx + 1}. {step}
+              </SubtitleText>
+            ))}
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-[8px] md:gap-[24px]">
-          {/* <LinkItem
+          <LinkItem
             href={LINKS.YOUTUBE}
             iconUrl="/icons/YoutubeIcon.png"
             label="Video guide"
-          /> */}
+          />
           <LinkItem
             href="https://help.safe.global/en/articles/234052-transaction-builder"
             iconUrl="/icons/SafeLogoIcon.png"
