@@ -130,6 +130,7 @@ export default function SafeRecoveryForm() {
 
       {/* Subaccounts List Section */}
       <SubaccountsList
+        selectedChain={userSelection.selectedChain}
         userInput={userSelection.consoleAddress}
         subaccounts={subaccounts}
         selectedAccounts={userSelection.selectedSubaccounts}

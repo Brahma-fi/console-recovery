@@ -1,9 +1,13 @@
 "use client";
 
+import { ChainName } from "@/app/config/blockchain";
+import { LINKS } from "@/app/config/constants";
+import Link from "next/link";
 import { isAddress } from "viem";
 
 interface SubaccountsListProps {
   userInput: string;
+  selectedChain: ChainName;
   subaccounts: string[];
   selectedAccounts: string[];
   onSelectAccount: (account: string) => void;
@@ -20,39 +24,60 @@ export function SubaccountsList({
   onDownloadClick,
   isLoading = false,
   isDownloading = false,
+  selectedChain,
 }: SubaccountsListProps) {
   const isDownloadDisabled = selectedAccounts.length === 0 || isDownloading;
+  const isBlast = selectedChain === "Blast";
 
   return (
-    <div className="w-full max-w-4xl space-y-6">
+    <div className="w-full max-w-4xl flex flex-col gap-6">
+      {isBlast && (
+        <p className="text-[#FCAA0D]">
+          Blast Accounts aren&apos;t supported on the Safe Ul. Head to Protofire
+          to manage your Sub-Accounts.
+        </p>
+      )}
       {/* Download Button */}
-      <div className="flex justify-center">
-        <button
-          onClick={onDownloadClick}
-          disabled={isDownloadDisabled}
-          className={`flex w-full px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 transition-all ${
-            isDownloadDisabled
-              ? "bg-[#494C56] text-[#A8ADB5] cursor-not-allowed gap-1"
-              : "bg-white text-black cursor-pointer gap-[6px]"
-          }`}
-        >
-          {isDownloading ? (
-            <>
-              <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-400 border-t-black"></div>
-              Generating...
-            </>
-          ) : (
-            <>
-              <DownloadIcon disabled={isDownloadDisabled} />{" "}
-              {selectedAccounts.length > 0
-                ? ` Download Json file (${selectedAccounts.length} Selected)`
-                : userInput
-                ? "Select Sub-Accounts to download JSON"
-                : "Enter Account Address to view Sub-Accounts"}
-            </>
-          )}
-        </button>
-      </div>
+
+      {isBlast ? (
+        <Link href={LINKS.PROTOFIRE} target="_blank">
+          {" "}
+          <button
+            className={`flex w-full px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 transition-all bg-white text-black cursor-pointer gap-[6px]`}
+          >
+            Open on Protofire
+          </button>
+        </Link>
+      ) : (
+        <div className="flex justify-center">
+          <button
+            onClick={onDownloadClick}
+            disabled={isDownloadDisabled}
+            className={`flex w-full px-2 py-2 justify-center items-center rounded-lg text-sm font-medium leading-6 transition-all ${
+              isDownloadDisabled
+                ? "bg-[#494C56] text-[#A8ADB5] cursor-not-allowed gap-1"
+                : "bg-white text-black cursor-pointer gap-[6px]"
+            }`}
+          >
+            {isDownloading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-400 border-t-black"></div>
+                Generating...
+              </>
+            ) : (
+              <>
+                <DownloadIcon disabled={isDownloadDisabled} />{" "}
+                {selectedAccounts.length > 0
+                  ? ` Download Json file (${selectedAccounts.length} Selected)`
+                  : userInput
+                  ? "Select Sub-Accounts to download JSON"
+                  : "Enter Account Address to view Sub-Accounts"}
+              </>
+            )}
+          </button>
+        </div>
+      )}
+
       {/* Subaccounts Container */}
       {!isAddress(userInput) ? (
         // Placeholder when no input

@@ -16,14 +16,18 @@ export function ConsoleInput({
   onAddressChange,
   onChainChange,
 }: ConsoleInputProps) {
+  const isBlast = selectedChain === "Blast";
   return (
     <div className="w-full max-w-4xl space-y-6">
       {/* Input Fields */}
       <div className="flex flex-col md:flex-row gap-4">
         {/* Console Address Input */}
         <input
+          disabled={isBlast}
           type="text"
-          className="flex items-center px-3 py-2 gap-1 flex-1 rounded-lg border border-[#494C56] bg-[#0D0D10] text-white text-sm focus:ring-2 focus:ring-accent-primary focus:border-accent-primary transition-all"
+          className={`flex items-center px-3 py-2 gap-1 flex-1 rounded-lg border border-[#494C56] bg-[#0D0D10] text-white text-sm focus:ring-2 focus:ring-accent-primary focus:border-accent-primary transition-all ${
+            isBlast ? "bg-[#494C56] text-[#A8ADB5] cursor-not-allowed" : ""
+          }`}
           placeholder="Paste your Brahma Account address"
           value={consoleAddress}
           onChange={(e) => onAddressChange(e.target.value)}

@@ -34,6 +34,7 @@ export const LINKS = {
   TWITTER: "https://x.com/brahmaFi",
   SAFE_GLOBAL_UI: "https://app.safe.global",
   YOUTUBE: "https://youtu.be/GLECu-9wt_E",
+  PROTOFIRE: "https://app.safe.protofire.io",
 };
 
 // Navigation IDs
